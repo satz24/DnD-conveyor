@@ -263,11 +263,14 @@
 }
 
 .login-brand-name {
-  font-family: 'Sora', 'Inter', system-ui, sans-serif;
-  font-size: 28px;
-  font-weight: 700;
-  letter-spacing: 0.01em;
+  font-family: var(--ls-font-display);
+  font-size: 22px;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  line-height: 1.35;
   margin: 0;
+  text-transform: uppercase;
+  -webkit-font-smoothing: none;
   background: linear-gradient(135deg, #f1f5f9 25%, #7dd3fc 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -339,11 +342,15 @@
 }
 
 .login-title {
-  font-size: 22px;
-  font-weight: 700;
+  font-family: var(--ls-font-display);
+  font-size: 15px;
+  font-weight: 400;
   color: #f1f5f9;
   margin: 0 0 6px 0;
-  letter-spacing: -0.015em;
+  letter-spacing: 0.08em;
+  line-height: 1.4;
+  text-transform: uppercase;
+  -webkit-font-smoothing: none;
 }
 
 .login-subtitle {
@@ -546,6 +553,16 @@
 
 /* ─── Sign In Button ──────────────────────────────────────────────── */
 
+.login-magnetic-wrap {
+  width: 100%;
+  display: block;
+}
+
+.signin-button .ls-neural-loader,
+.social-button .ls-neural-loader {
+  flex-shrink: 0;
+}
+
 .signin-button {
   width: 100%;
   padding: 13px 20px;
@@ -682,12 +699,10 @@
   box-shadow: 0 8px 20px rgba(2, 6, 23, 0.4);
 }
 
-.social-button:active {
-  transform: translateY(0);
-  box-shadow: none;
+.social-button.loading {
+  pointer-events: none;
+  opacity: 0.72;
 }
-
-/* ─── Register Link ───────────────────────────────────────────────── */
 
 .register-text {
   font-size: 13px;
@@ -722,11 +737,11 @@
   }
 
   .login-brand-name {
-    font-size: 24px;
+    font-size: 18px;
   }
 
   .login-title {
-    font-size: 20px;
+    font-size: 13px;
   }
 }
 

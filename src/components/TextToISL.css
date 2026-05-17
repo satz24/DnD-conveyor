@@ -127,16 +127,18 @@
 }
 
 .text-isl-logo-text {
-  font-family: 'Sora', 'Inter', system-ui, sans-serif;
-  font-size: 20px;
-  font-weight: 700;
-  letter-spacing: 0.01em;
+  font-family: var(--ls-font-display);
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  line-height: 1.35;
   margin: 0;
   color: #f1f5f9;
+  text-transform: uppercase;
+  -webkit-font-smoothing: none;
   background: none;
   -webkit-text-fill-color: #f1f5f9;
   filter: none;
-  text-transform: none;
 }
 
 .text-isl-subtitle {
@@ -243,11 +245,14 @@
 
 .text-isl-avatar-soon-title {
   margin: 0 0 4px;
-  font-family: 'Sora', 'Inter', system-ui, sans-serif;
-  font-size: 16px;
-  font-weight: 700;
-  letter-spacing: 0.02em;
+  font-family: var(--ls-font-display);
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  line-height: 1.45;
   color: #e2e8f0;
+  text-transform: uppercase;
+  -webkit-font-smoothing: none;
 }
 
 .text-isl-avatar-soon-sub {
@@ -693,10 +698,14 @@
 
 .sign-play-prompt-title {
   margin: 0;
-  font-size: 18px;
-  font-weight: 700;
+  font-family: var(--ls-font-display);
+  font-size: 12px;
+  font-weight: 400;
   color: #e2e8f0;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.06em;
+  line-height: 1.45;
+  text-transform: uppercase;
+  -webkit-font-smoothing: none;
 }
 
 .sign-play-prompt-sub {

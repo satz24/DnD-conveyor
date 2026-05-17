@@ -6,6 +6,9 @@
 import { useEffect, useState, useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { publicAsset } from '../publicAsset'
+import { TiltCard } from './motion/TiltCard'
+import { HeroSignalAura } from './motion/HeroSignalAura'
+import { Magnetic } from './motion/Magnetic'
 import './Dashboard.css'
 
 interface DashboardProps {
@@ -174,6 +177,7 @@ export const Dashboard = ({
 
         {/* ── Hero ──────────────────────────────────────────────── */}
         <motion.section className="db-hero" variants={stagger(0.04)} initial="hidden" animate="visible">
+          <HeroSignalAura />
 
           <motion.div className="db-hero-eyebrow" variants={fadeUp(0)}>
             <span className="db-ai-pill">
@@ -214,7 +218,13 @@ export const Dashboard = ({
         </motion.section>
 
         {/* ── Modules ───────────────────────────────────────────── */}
-        <section className="db-modules">
+        <motion.section
+          className="db-modules"
+          initial={{ opacity: 0, y: 36 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.12, margin: '-40px 0px' }}
+          transition={{ duration: 0.55, ease }}
+        >
           <motion.div className="db-section-head" variants={fadeUp(0.15)} initial="hidden" animate="visible">
             <h2 className="db-section-title">Modules</h2>
             <p className="db-section-sub">Choose your workflow</p>
@@ -223,8 +233,7 @@ export const Dashboard = ({
           <motion.div className="action-cards" variants={stagger(0.2)} initial="hidden" animate="visible">
 
             {/* ── Featured: ISL → Text ───────────────────────── */}
-            <motion.div className="action-card action-card--featured" variants={cardV}
-              whileHover={{ y: -6, transition: { duration: 0.2 } }}>
+            <TiltCard className="action-card action-card--featured" variants={cardV} maxTilt={5}>
 
               {/* Scan line animation */}
               <div className="card-scan-line" aria-hidden="true" />
@@ -257,23 +266,26 @@ export const Dashboard = ({
                   <span className="action-stat-sep">·</span>
                   <span className="action-stat"><strong>MediaPipe</strong> landmarks</span>
                 </div>
-                <motion.button className="action-cta-btn"
-                  onClick={() => { setLastModule('islToText'); onNavigateToISLToText?.() }}
-                  whileHover={{ scale: 1.04, y: -2 }} whileTap={{ scale: 0.97 }} transition={{ duration: 0.14 }}>
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round">
-                    <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/>
-                  </svg>
-                  Launch Camera
-                </motion.button>
+                <Magnetic strength={0.28}>
+                  <motion.button className="action-cta-btn"
+                    onClick={() => { setLastModule('islToText'); onNavigateToISLToText?.() }}
+                    whileHover={{ scale: 1.05, y: -2 }}
+                    whileTap={{ scale: 0.97 }}
+                    transition={{ type: 'spring', stiffness: 420, damping: 22 }}>
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round">
+                      <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/>
+                    </svg>
+                    Launch Camera
+                  </motion.button>
+                </Magnetic>
               </div>
-            </motion.div>
+            </TiltCard>
 
             {/* ── Right column ──────────────────────────────── */}
             <div className="action-cards-col">
 
               {/* Text → ISL */}
-              <motion.div className="action-card action-card--compact" variants={cardV}
-                whileHover={{ y: -5, transition: { duration: 0.2 } }}>
+              <TiltCard className="action-card action-card--compact" variants={cardV} maxTilt={6}>
                 <div className="card-inner-glow card-inner-glow--violet" />
                 <svg className="compact-deco compact-deco--violet" viewBox="0 0 48 48" fill="none" aria-hidden="true">
                   <rect x="4" y="10" width="40" height="28" rx="5" stroke="#9b4dff" strokeWidth="1.4"/>
@@ -287,14 +299,15 @@ export const Dashboard = ({
                 <p className="action-description action-description--sm">Type or speak text and watch a real-time 3D hand avatar perform each ISL sign.</p>
                 <motion.button className="action-link action-link--violet"
                   onClick={() => { setLastModule('textToIsl'); onNavigateToTextToISL?.() }}
-                  whileHover={{ x: 5 }} transition={{ duration: 0.13 }}>
+                  whileHover={{ x: 6, scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  transition={{ type: 'spring', stiffness: 380, damping: 22 }}>
                   Start Translating →
                 </motion.button>
-              </motion.div>
+              </TiltCard>
 
               {/* Library */}
-              <motion.div className="action-card action-card--compact" variants={cardV}
-                whileHover={{ y: -5, transition: { duration: 0.2 } }}>
+              <TiltCard className="action-card action-card--compact" variants={cardV} maxTilt={6}>
                 <div className="card-inner-glow card-inner-glow--green" />
                 <div className="compact-alpha-grid" aria-hidden="true">
                   {'ABCDEFGHI'.split('').map(l => (
@@ -309,17 +322,25 @@ export const Dashboard = ({
                 <p className="action-description action-description--sm">Explore every ISL alphabet and number with reference images and gesture guides.</p>
                 <motion.button className="action-link action-link--green"
                   onClick={() => { setLastModule('library'); onNavigateToLibrary?.() }}
-                  whileHover={{ x: 5 }} transition={{ duration: 0.13 }}>
+                  whileHover={{ x: 6, scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  transition={{ type: 'spring', stiffness: 380, damping: 22 }}>
                   Open Library →
                 </motion.button>
-              </motion.div>
+              </TiltCard>
 
             </div>
           </motion.div>
-        </section>
+        </motion.section>
 
         {/* ── Analytics row ─────────────────────────────────────── */}
-        <motion.section className="db-analytics" variants={stagger(0.3)} initial="hidden" animate="visible">
+        <motion.section
+          className="db-analytics"
+          variants={stagger(0.3)}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.15 }}
+        >
           <motion.div className="db-section-head" variants={fadeUp(0)}>
             <h2 className="db-section-title">AI Analytics</h2>
             <p className="db-section-sub">Real-time model performance</p>
@@ -332,8 +353,7 @@ export const Dashboard = ({
               { label: 'Hand Landmarks',  value: 21,   suffix: '',   bar: 1.0,   color: 'violet', decimals: 0, desc: 'MediaPipe keypoints' },
               { label: 'AI Confidence',   value: 87,   suffix: '%',  bar: 0.87,  color: 'orange', decimals: 0, desc: 'Avg prediction score' },
             ].map(({ label, value, suffix, bar, color, decimals, desc }) => (
-              <motion.div key={label} className={`db-analytic-card db-analytic-card--${color}`} variants={cardV}
-                whileHover={{ y: -4, transition: { duration: 0.18 } }}>
+              <TiltCard key={label} className={`db-analytic-card db-analytic-card--${color}`} variants={cardV} maxTilt={4}>
                 <p className="db-analytic-label">{label}</p>
                 <p className="db-analytic-value">
                   <AnimCounter to={value} suffix={suffix} decimals={decimals} />
@@ -348,7 +368,7 @@ export const Dashboard = ({
                     style={{ originX: 0 }}
                   />
                 </div>
-              </motion.div>
+              </TiltCard>
             ))}
           </motion.div>
         </motion.section>

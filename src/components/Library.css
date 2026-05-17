@@ -123,12 +123,15 @@
 }
 
 .library-logo-text {
-  font-family: 'Sora', 'Inter', system-ui, sans-serif;
-  font-size: 20px;
-  font-weight: 700;
-  letter-spacing: 0.01em;
+  font-family: var(--ls-font-display);
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  line-height: 1.35;
   color: #f1f5f9;
   margin: 0;
+  text-transform: uppercase;
+  -webkit-font-smoothing: none;
   filter: none;
   animation: none;
 }
