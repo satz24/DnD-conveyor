@@ -30,3 +30,7 @@ yarn-error.log*
 
 # OS
 Thumbs.db
+
+# Python virtual environments
+.venv
+training_code/.venv
