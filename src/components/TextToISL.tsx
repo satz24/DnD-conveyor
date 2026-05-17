@@ -5,6 +5,7 @@
 
 import { useState, useRef, useEffect, useCallback, useMemo } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { publicAsset } from '../publicAsset'
 import './TextToISL.css'
 
 interface TextToISLProps {
@@ -217,7 +218,7 @@ export const TextToISL = ({ onBack }: TextToISLProps) => {
       >
         <div className="text-isl-header-content">
           <div className="text-isl-brand">
-            <img className="text-isl-brand-mark" src="/logo.jpg" alt="LinguoSign logo" />
+            <img className="text-isl-brand-mark" src={publicAsset('logo.jpg')} alt="LinguoSign logo" />
             <div className="text-isl-logo">
               <h1 className="text-isl-logo-text">Text to ISL</h1>
               <p className="text-isl-subtitle">Convert Text to Indian Sign Language</p>

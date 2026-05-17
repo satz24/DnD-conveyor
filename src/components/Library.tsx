@@ -6,6 +6,7 @@
 import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { getPhraseVideoUrl } from '../signVideos'
+import { publicAsset } from '../publicAsset'
 import './Library.css'
 
 interface LibraryProps {
@@ -115,7 +116,7 @@ export const Library = ({ onBack }: LibraryProps) => {
       >
         <div className="library-header-content">
           <div className="library-brand">
-            <img className="library-brand-mark" src="/logo.jpg" alt="LinguoSign logo" />
+            <img className="library-brand-mark" src={publicAsset('logo.jpg')} alt="LinguoSign logo" />
             <div className="library-logo">
               <h1 className="library-logo-text">LinguoSign</h1>
               <p className="library-tagline">Bridging Silence Through Signs</p>
@@ -213,7 +214,7 @@ export const Library = ({ onBack }: LibraryProps) => {
                     >
                       {Array.from({ length: 26 }, (_, i) => {
                         const letter  = String.fromCharCode(65 + i)
-                        const imageSrc = datasetAlphabetMap[letter] || `/signs/alphabets/${letter}.png`
+                        const imageSrc = datasetAlphabetMap[letter] || publicAsset(`signs/alphabets/${letter}.png`)
                         return (
                           <SignCard key={letter}>
                             <div className="sign-image-placeholder">
@@ -258,7 +259,7 @@ export const Library = ({ onBack }: LibraryProps) => {
                   >
                     {Array.from({ length: 10 }, (_, i) => {
                       const number   = i.toString()
-                      const imageSrc = datasetNumberMap[number] || `/signs/numbers/${number}.png`
+                      const imageSrc = datasetNumberMap[number] || publicAsset(`signs/numbers/${number}.png`)
                       return (
                         <SignCard key={number}>
                           <div className="sign-image-placeholder">

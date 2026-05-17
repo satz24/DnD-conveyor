@@ -6,6 +6,7 @@
 import { useState, useEffect, useCallback } from 'react'
 import { motion, AnimatePresence, type Variants } from 'framer-motion'
 import { GoogleAccountPicker, type GoogleAccount } from './GoogleAccountPicker'
+import { publicAsset } from '../publicAsset'
 import './Login.css'
 
 const GOOGLE_ACCOUNTS_KEY = 'linguosing_google_accounts'
@@ -400,7 +401,7 @@ export const Login = ({ onLogin }: LoginProps) => {
         animate="visible"
       >
         <div className="login-logo-badge" aria-hidden="true">
-          <img className="login-logo-badge-img" src="/logo.jpg" alt="LinguoSign logo" />
+          <img className="login-logo-badge-img" src={publicAsset('logo.jpg')} alt="LinguoSign logo" />
         </div>
         <h1 className="login-brand-name">LinguoSign</h1>
         <p className="login-brand-tagline">Assistive sign-to-text translation for everyone</p>

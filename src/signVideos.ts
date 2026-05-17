@@ -1,14 +1,16 @@
+import { publicAsset } from './publicAsset'
+
 /** Phrase label → public URL for pre-recorded ISL sign clips. */
 export const phraseVideoMap: Record<string, string> = {
-  hello: '/videos/videos/Hello.mp4',
-  namaste: '/videos/videos/Namaste.mp4',
-  'good morning': '/videos/videos/Good%20morning.mp4',
-  'good afternoon': '/videos/videos/Good%20afternoon.mp4',
-  'good evening': '/videos/videos/Good%20evening.mp4',
-  'good night': '/videos/videos/Good%20night.mp4',
-  'how are you': '/videos/videos/how%20are%20you.mp4',
-  'how are you?': '/videos/videos/how%20are%20you.mp4',
-  'happy birthday': '/videos/videos/Happy%20birthday.mp4',
+  hello: publicAsset('videos/videos/Hello.mp4'),
+  namaste: publicAsset('videos/videos/Namaste.mp4'),
+  'good morning': publicAsset('videos/videos/Good%20morning.mp4'),
+  'good afternoon': publicAsset('videos/videos/Good%20afternoon.mp4'),
+  'good evening': publicAsset('videos/videos/Good%20evening.mp4'),
+  'good night': publicAsset('videos/videos/Good%20night.mp4'),
+  'how are you': publicAsset('videos/videos/how%20are%20you.mp4'),
+  'how are you?': publicAsset('videos/videos/how%20are%20you.mp4'),
+  'happy birthday': publicAsset('videos/videos/Happy%20birthday.mp4'),
 }
 
 export function getPhraseVideoUrl(word: string): string | null {

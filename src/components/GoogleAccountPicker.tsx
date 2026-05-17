@@ -4,6 +4,7 @@
  */
 import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { publicAsset } from '../publicAsset'
 import './GoogleAccountPicker.css'
 
 export interface GoogleAccount {
@@ -112,7 +113,7 @@ export function GoogleAccountPicker({
             aria-labelledby="google-picker-title"
           >
             <div className="google-picker-header">
-              <img className="google-picker-app-logo" src="/logo.jpg" alt="" />
+              <img className="google-picker-app-logo" src={publicAsset('logo.jpg')} alt="" />
               <p id="google-picker-title" className="google-picker-title">
                 Choose an account
               </p>

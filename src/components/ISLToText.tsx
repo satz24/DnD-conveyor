@@ -15,6 +15,7 @@
 import { useState, useRef, useEffect } from 'react'
 import { FilesetResolver, HandLandmarker } from '@mediapipe/tasks-vision'
 import { motion, AnimatePresence } from 'framer-motion'
+import { publicAsset } from '../publicAsset'
 import './ISLToText.css'
 
 interface ISLToTextProps {
@@ -426,7 +427,7 @@ export const ISLToText = ({ onBack }: ISLToTextProps) => {
       >
         <div className="isl-header-content">
           <div className="isl-brand">
-            <img className="isl-brand-mark" src="/logo.jpg" alt="LinguoSign logo" />
+            <img className="isl-brand-mark" src={publicAsset('logo.jpg')} alt="LinguoSign logo" />
             <div className="isl-logo">
               <h1 className="isl-logo-text">ISL to Text</h1>
               <p className="isl-subtitle">Convert Indian Sign Language to Text &amp; Speech</p>

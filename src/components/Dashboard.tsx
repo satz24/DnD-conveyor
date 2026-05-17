@@ -5,6 +5,7 @@
 
 import { useEffect, useState, useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
+import { publicAsset } from '../publicAsset'
 import './Dashboard.css'
 
 interface DashboardProps {
@@ -121,7 +122,7 @@ export const Dashboard = ({
           {/* Brand */}
           <div className="db-brand">
             <div className="db-brand-icon" aria-hidden="true">
-              <img className="db-brand-icon-img" src="/logo.jpg" alt="LinguoSign logo" />
+              <img className="db-brand-icon-img" src={publicAsset('logo.jpg')} alt="LinguoSign logo" />
             </div>
             <span className="db-brand-name">LinguoSign</span>
           </div>
